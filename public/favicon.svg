@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#2e7d32"/>
+  <!-- 幹 -->
+  <rect x="30" y="34" width="4" height="20" fill="#5d4037"/>
+  <!-- 枝分かれ（系統樹） -->
+  <g stroke="#a5d6a7" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M32 36 L20 24"/>
+    <path d="M32 36 L44 24"/>
+    <path d="M20 24 L14 16"/>
+    <path d="M20 24 L26 16"/>
+    <path d="M44 24 L38 16"/>
+    <path d="M44 24 L50 16"/>
+  </g>
+  <!-- 実 -->
+  <g fill="#ffca28">
+    <circle cx="14" cy="14" r="4"/>
+    <circle cx="26" cy="14" r="4"/>
+    <circle cx="38" cy="14" r="4"/>
+    <circle cx="50" cy="14" r="4"/>
+  </g>
+</svg>
