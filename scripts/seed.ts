@@ -104,4 +104,38 @@ export const seed: SeedFruit[] = [
 
   // ヤシ目 Arecales / ヤシ科（サラク・ナツメヤシと同科）
   { ja: 'ココヤシ（ココナッツ）', en: 'Coconut', sci: 'Cocos nucifera' },
+
+  // ── インドネシア・シンガポール・マレー諸島の特産 ──
+  // クワ科 Artocarpus（ジャックフルーツと同属）
+  { ja: 'チェンペダック（Cempedak）', en: 'Cempedak', sci: 'Artocarpus integer' },
+  { ja: 'マラン（Marang/Terap）', en: 'Marang', sci: 'Artocarpus odoratissimus' },
+  // ムクロジ科（ランブータン・リュウガンと同科）
+  { ja: 'プラサン（Pulasan）', en: 'Pulasan', sci: 'Nephelium ramboutan-ake' },
+  { ja: 'マトア（Matoa, パプア特産）', en: 'Matoa', sci: 'Pometia pinnata' },
+  // ウルシ科（マンゴーと同科）
+  { ja: 'ガンダリア（Gandaria）', en: 'Gandaria', sci: 'Bouea macrophylla' },
+  { ja: 'バチャン（馬マンゴー, Bacang）', en: 'Horse mango', sci: 'Mangifera foetida' },
+  { ja: 'カシューアップル（Jambu monyet）', en: 'Cashew apple', sci: 'Anacardium occidentale' },
+  // カタバミ科（スターフルーツと同属）
+  { ja: 'ビリンビ（Belimbing wuluh）', en: 'Bilimbi', sci: 'Averrhoa bilimbi' },
+  // フトモモ科（レンブ・ジャワフトモモと同属）
+  { ja: 'マレーフトモモ（Jambu bol）', en: 'Malay apple', sci: 'Syzygium malaccense' },
+  { ja: 'ローズアップル（Jambu mawar）', en: 'Rose apple', sci: 'Syzygium jambos' },
+  // バンレイシ科（サワーソップ等と同科）
+  { ja: 'ギュウシンリ（牛心梨, Buah nona）', en: "Bullock's heart", sci: 'Annona reticulata' },
+  { ja: 'クペル（Kepel, ジャワ王宮の果実）', en: 'Kepel apple', sci: 'Stelechocarpus burahol' },
+  // フクギ科（マンゴスチンと同属）
+  { ja: 'ムンドゥ（Mundu）', en: 'Mundu', sci: 'Garcinia dulcis' },
+  { ja: 'ボタンマンゴスチン（Cherapu）', en: 'Button mangosteen', sci: 'Garcinia prainiana' },
+  // コミカンソウ科（キントラノオ目の新しい科）
+  { ja: 'ビグナイ（Buni）', en: 'Bignay', sci: 'Antidesma bunius' },
+  { ja: 'ランバイ（Rambai）', en: 'Rambai', sci: 'Baccaurea motleyana' },
+  // ナス目 Solanales / ナス科（系統樹に新しい目が生える）
+  { ja: 'ショクヨウホオズキ（Ciplukan）', en: 'Cape gooseberry', sci: 'Physalis peruviana' },
+  // ミカン科（柑橘の仲間）
+  { ja: 'ウッドアップル（Kawista）', en: 'Wood apple', sci: 'Limonia acidissima' },
+  // アカテツ科（サポジラと同科）
+  { ja: 'サオケチック（Sawo kecik）', en: 'Caqui', sci: 'Manilkara kauki' },
+  // アオイ科（ドリアンと同属）
+  { ja: 'ライ（Lai, ボルネオドリアン）', en: 'Red-fleshed durian', sci: 'Durio kutejensis' },
 ]
