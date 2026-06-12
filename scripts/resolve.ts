@@ -16,7 +16,7 @@ import type { WikidataMeta } from './pipeline/wikidata'
 import { extractsByTitles } from './pipeline/mediawiki'
 import type { Extract } from './pipeline/mediawiki'
 import { slugify } from './lib/slug'
-import type { ResolvedRank, ResolvedSpecies } from '../src/core/types'
+import type { ResolvedRank, ResolvedSpecies } from '../lib/core/types'
 
 async function main() {
   console.log(`▶ シード ${seed.length} 種を解決します\n`)

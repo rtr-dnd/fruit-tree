@@ -1,5 +1,5 @@
 import { cachedGet } from '../lib/http'
-import type { Rank } from '../../src/core/types'
+import type { Rank } from '../../lib/core/types'
 
 export interface GbifAncestor {
   rank: Rank

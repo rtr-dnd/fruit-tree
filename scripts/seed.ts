@@ -25,7 +25,7 @@ export const seed: SeedFruit[] = [
 
   // ── ムクロジ目 Sapindales（ライチ。黄金果とは目が異なる＝遠い） ──
   { ja: 'ライチ', en: 'Lychee', sci: 'Litchi chinensis' },
-  { ja: 'リュウガン', en: 'Longan', sci: 'Dimocarpus longan' },
+  { ja: 'リュウガン（ロンガン）', en: 'Longan', sci: 'Dimocarpus longan' },
   { ja: 'ランブータン', en: 'Rambutan', sci: 'Nephelium lappaceum' },
   { ja: 'マンゴー', en: 'Mango', sci: 'Mangifera indica' },
   { ja: 'ウンシュウミカン', en: 'Mandarin orange', sci: 'Citrus reticulata' },
@@ -65,4 +65,43 @@ export const seed: SeedFruit[] = [
   { ja: 'パイナップル', en: 'Pineapple', sci: 'Ananas comosus' },
   { ja: 'ナツメヤシ（デーツ）', en: 'Date palm', sci: 'Phoenix dactylifera' },
   { ja: 'サラク（スネークフルーツ）', en: 'Salak', sci: 'Salacca zalacca' },
+
+  // ── 東南アジアのフルーツ ──
+  // モクレン目 Magnoliales / バンレイシ科 Annonaceae（系統樹に新しい目が生える）
+  { ja: 'サワーソップ（トゲバンレイシ）', en: 'Soursop', sci: 'Annona muricata' },
+  { ja: 'バンレイシ（釈迦頭）', en: 'Sugar apple', sci: 'Annona squamosa' },
+  { ja: 'チェリモヤ', en: 'Cherimoya', sci: 'Annona cherimola' },
+  { ja: 'アテモヤ', en: 'Atemoya', sci: 'Annona atemoya' },
+
+  // アオイ目 Malvales / アオイ科
+  { ja: 'ドリアン', en: 'Durian', sci: 'Durio zibethinus' },
+
+  // バラ目 Rosales / クワ科（イチジク・クワと同科の別属）
+  { ja: 'ジャックフルーツ（パラミツ）', en: 'Jackfruit', sci: 'Artocarpus heterophyllus' },
+  { ja: 'パンノキ', en: 'Breadfruit', sci: 'Artocarpus altilis' },
+  // バラ目 / クロウメモドキ科
+  { ja: 'インドナツメ', en: 'Indian jujube', sci: 'Ziziphus mauritiana' },
+
+  // ムクロジ目 Sapindales / センダン科（ミカン・マンゴー・ライチと同目の別科）
+  { ja: 'ランサット（ドゥク）', en: 'Langsat', sci: 'Lansium parasiticum' },
+  { ja: 'サントール', en: 'Santol', sci: 'Sandoricum koetjape' },
+  // ムクロジ目 / ウルシ科（マンゴーと同科の別属）
+  { ja: 'アンブレラフルーツ（アムラ）', en: 'Ambarella', sci: 'Spondias dulcis' },
+  // ムクロジ目 / ミカン科（柑橘の仲間）
+  { ja: 'ザボン（ポメロ）', en: 'Pomelo', sci: 'Citrus maxima' },
+
+  // アブラナ目 Brassicales / パパイア科
+  { ja: 'パパイヤ', en: 'Papaya', sci: 'Carica papaya' },
+
+  // カタバミ目 Oxalidales / カタバミ科
+  { ja: 'スターフルーツ（ゴレンシ）', en: 'Starfruit', sci: 'Averrhoa carambola' },
+
+  // マメ目 Fabales / マメ科
+  { ja: 'タマリンド', en: 'Tamarind', sci: 'Tamarindus indica' },
+
+  // フトモモ目 Myrtales / フトモモ科（レンブ・グアバと同目）
+  { ja: 'ジャワフトモモ（ジャンボラン）', en: 'Java plum', sci: 'Syzygium cumini' },
+
+  // ヤシ目 Arecales / ヤシ科（サラク・ナツメヤシと同科）
+  { ja: 'ココヤシ（ココナッツ）', en: 'Coconut', sci: 'Cocos nucifera' },
 ]

@@ -7,8 +7,8 @@
  */
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { dirname } from 'node:path'
-import { buildTaxonTree } from '../src/core/tree'
-import type { ResolvedSpecies } from '../src/core/types'
+import { buildTaxonTree } from '../lib/core/tree'
+import type { ResolvedSpecies } from '../lib/core/types'
 import { RESOLVED_PATH, TAXA_OUT_PATH as OUT_PATH } from './lib/paths'
 
 async function main() {

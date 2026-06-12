@@ -1,0 +1,11 @@
+import type { Rank } from './core'
+
+export const RANK_JA: Record<Rank, string> = {
+  KINGDOM: '界',
+  PHYLUM: '門',
+  CLASS: '綱',
+  ORDER: '目',
+  FAMILY: '科',
+  GENUS: '属',
+  SPECIES: '種',
+}

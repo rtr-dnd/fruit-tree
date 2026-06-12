@@ -7,4 +7,4 @@ const here = dirname(fileURLToPath(import.meta.url))
 export const RESOLVED_PATH = join(here, '..', '.cache', 'resolved.json')
 
 /** アプリにバンドルする静的分類ツリー。 */
-export const TAXA_OUT_PATH = join(here, '..', '..', 'src', 'data', 'taxa.json')
+export const TAXA_OUT_PATH = join(here, '..', '..', 'lib', 'data', 'taxa.json')

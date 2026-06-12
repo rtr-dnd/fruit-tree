@@ -1,1 +1,0 @@
-{"root":["./vite.config.ts","./scripts/build-taxa.ts","./scripts/resolve.ts","./scripts/seed.ts","./scripts/lib/http.ts","./scripts/lib/paths.ts","./scripts/lib/slug.ts","./scripts/pipeline/gbif.ts","./scripts/pipeline/mediawiki.ts","./scripts/pipeline/wikidata.ts"],"version":"5.9.3"}
