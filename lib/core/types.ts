@@ -36,6 +36,10 @@ export interface TaxonNode {
   representativeSpeciesIds: string[]
   /** 別名（検索の表記ゆれ耐性用 / §4.4）。例: レイシ に対する「ライチ」。 */
   searchAliases?: string[]
+  /** この種がシードに追加された日（YYYY-MM-DD）。SPECIES のみ。 */
+  addedAt?: string
+  /** 追加順の連番（大きいほど新しい）。SPECIES のみ。「最近追加」並べ替え用。 */
+  addedSeq?: number
 }
 
 export interface TaxonTree {

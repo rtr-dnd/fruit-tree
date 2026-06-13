@@ -68,15 +68,18 @@ describe('UI スモーク（Next + shadcn）', () => {
     expect(screen.getByText('Google でログイン')).toBeTruthy()
   })
 
-  it('チェックリストが全種を一覧表示する', () => {
+  it('リストが全種を一覧表示し、チェックトグルがある', () => {
     const { container } = wrap(<CheckListView />)
-    expect(screen.getByText('チェックリスト')).toBeTruthy()
-    // フィルタチップ
-    expect(screen.getByText('未食')).toBeTruthy()
+    expect(screen.getByText('リスト')).toBeTruthy()
+    // フィルタチップは無い
+    expect(screen.queryByText('未食')).toBeNull()
     // 代表的な種が並ぶ
     expect(screen.getAllByText('黄金果').length).toBeGreaterThan(0)
-    // 全種ぶんの行が描画される（トグル用チェック枠 = 行数）
+    // 全種ぶんの行（行=詳細へ遷移）
     const rows = container.querySelectorAll('[role="button"]')
     expect(rows.length).toBe(allSpecies.length)
+    // 各行にトグル用ボタン（チェックマーク）がある
+    const toggles = container.querySelectorAll('button[aria-pressed]')
+    expect(toggles.length).toBe(allSpecies.length)
   })
 })

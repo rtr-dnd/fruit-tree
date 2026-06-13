@@ -1,0 +1,398 @@
+{
+  "pouteria-caimito": {
+    "seq": 1,
+    "date": "2026-06-13"
+  },
+  "pouteria-campechiana": {
+    "seq": 2,
+    "date": "2026-06-13"
+  },
+  "pouteria-sapota": {
+    "seq": 3,
+    "date": "2026-06-13"
+  },
+  "manilkara-zapota": {
+    "seq": 4,
+    "date": "2026-06-13"
+  },
+  "chrysophyllum-cainito": {
+    "seq": 5,
+    "date": "2026-06-13"
+  },
+  "synsepalum-dulcificum": {
+    "seq": 6,
+    "date": "2026-06-13"
+  },
+  "diospyros-kaki": {
+    "seq": 7,
+    "date": "2026-06-13"
+  },
+  "diospyros-blancoi": {
+    "seq": 8,
+    "date": "2026-06-13"
+  },
+  "actinidia-chinensis": {
+    "seq": 9,
+    "date": "2026-06-13"
+  },
+  "actinidia-arguta": {
+    "seq": 10,
+    "date": "2026-06-13"
+  },
+  "vaccinium-corymbosum": {
+    "seq": 11,
+    "date": "2026-06-13"
+  },
+  "bertholletia-excelsa": {
+    "seq": 12,
+    "date": "2026-06-13"
+  },
+  "litchi-chinensis": {
+    "seq": 13,
+    "date": "2026-06-13"
+  },
+  "dimocarpus-longan": {
+    "seq": 14,
+    "date": "2026-06-13"
+  },
+  "nephelium-lappaceum": {
+    "seq": 15,
+    "date": "2026-06-13"
+  },
+  "mangifera-indica": {
+    "seq": 16,
+    "date": "2026-06-13"
+  },
+  "citrus-reticulata": {
+    "seq": 17,
+    "date": "2026-06-13"
+  },
+  "citrus-sinensis": {
+    "seq": 18,
+    "date": "2026-06-13"
+  },
+  "malus-domestica": {
+    "seq": 19,
+    "date": "2026-06-13"
+  },
+  "pyrus-pyrifolia": {
+    "seq": 20,
+    "date": "2026-06-13"
+  },
+  "prunus-persica": {
+    "seq": 21,
+    "date": "2026-06-13"
+  },
+  "prunus-avium": {
+    "seq": 22,
+    "date": "2026-06-13"
+  },
+  "fragaria-ananassa": {
+    "seq": 23,
+    "date": "2026-06-13"
+  },
+  "ficus-carica": {
+    "seq": 24,
+    "date": "2026-06-13"
+  },
+  "morus-alba": {
+    "seq": 25,
+    "date": "2026-06-13"
+  },
+  "psidium-guajava": {
+    "seq": 26,
+    "date": "2026-06-13"
+  },
+  "plinia-cauliflora": {
+    "seq": 27,
+    "date": "2026-06-13"
+  },
+  "syzygium-samarangense": {
+    "seq": 28,
+    "date": "2026-06-13"
+  },
+  "punica-granatum": {
+    "seq": 29,
+    "date": "2026-06-13"
+  },
+  "passiflora-edulis": {
+    "seq": 30,
+    "date": "2026-06-13"
+  },
+  "garcinia-mangostana": {
+    "seq": 31,
+    "date": "2026-06-13"
+  },
+  "malpighia-emarginata": {
+    "seq": 32,
+    "date": "2026-06-13"
+  },
+  "persea-americana": {
+    "seq": 33,
+    "date": "2026-06-13"
+  },
+  "vitis-vinifera": {
+    "seq": 34,
+    "date": "2026-06-13"
+  },
+  "selenicereus-undatus": {
+    "seq": 35,
+    "date": "2026-06-13"
+  },
+  "cucumis-melo": {
+    "seq": 36,
+    "date": "2026-06-13"
+  },
+  "citrullus-lanatus": {
+    "seq": 37,
+    "date": "2026-06-13"
+  },
+  "musa-acuminata": {
+    "seq": 38,
+    "date": "2026-06-13"
+  },
+  "ananas-comosus": {
+    "seq": 39,
+    "date": "2026-06-13"
+  },
+  "phoenidactylifera": {
+    "seq": 40,
+    "date": "2026-06-13"
+  },
+  "salacca-zalacca": {
+    "seq": 41,
+    "date": "2026-06-13"
+  },
+  "annona-muricata": {
+    "seq": 42,
+    "date": "2026-06-13"
+  },
+  "annona-squamosa": {
+    "seq": 43,
+    "date": "2026-06-13"
+  },
+  "annona-cherimola": {
+    "seq": 44,
+    "date": "2026-06-13"
+  },
+  "annona-atemoya": {
+    "seq": 45,
+    "date": "2026-06-13"
+  },
+  "durio-zibethinus": {
+    "seq": 46,
+    "date": "2026-06-13"
+  },
+  "artocarpus-heterophyllus": {
+    "seq": 47,
+    "date": "2026-06-13"
+  },
+  "artocarpus-altilis": {
+    "seq": 48,
+    "date": "2026-06-13"
+  },
+  "ziziphus-mauritiana": {
+    "seq": 49,
+    "date": "2026-06-13"
+  },
+  "lansium-parasiticum": {
+    "seq": 50,
+    "date": "2026-06-13"
+  },
+  "sandoricum-koetjape": {
+    "seq": 51,
+    "date": "2026-06-13"
+  },
+  "spondias-dulcis": {
+    "seq": 52,
+    "date": "2026-06-13"
+  },
+  "citrus-maxima": {
+    "seq": 53,
+    "date": "2026-06-13"
+  },
+  "carica-papaya": {
+    "seq": 54,
+    "date": "2026-06-13"
+  },
+  "averrhoa-carambola": {
+    "seq": 55,
+    "date": "2026-06-13"
+  },
+  "tamarindus-indica": {
+    "seq": 56,
+    "date": "2026-06-13"
+  },
+  "syzygium-cumini": {
+    "seq": 57,
+    "date": "2026-06-13"
+  },
+  "cocos-nucifera": {
+    "seq": 58,
+    "date": "2026-06-13"
+  },
+  "artocarpus-integer": {
+    "seq": 59,
+    "date": "2026-06-13"
+  },
+  "artocarpus-odoratissimus": {
+    "seq": 60,
+    "date": "2026-06-13"
+  },
+  "nephelium-ramboutan-ake": {
+    "seq": 61,
+    "date": "2026-06-13"
+  },
+  "pometia-pinnata": {
+    "seq": 62,
+    "date": "2026-06-13"
+  },
+  "bouea-macrophylla": {
+    "seq": 63,
+    "date": "2026-06-13"
+  },
+  "mangifera-foetida": {
+    "seq": 64,
+    "date": "2026-06-13"
+  },
+  "anacardium-occidentale": {
+    "seq": 65,
+    "date": "2026-06-13"
+  },
+  "averrhoa-bilimbi": {
+    "seq": 66,
+    "date": "2026-06-13"
+  },
+  "syzygium-malaccense": {
+    "seq": 67,
+    "date": "2026-06-13"
+  },
+  "syzygium-jambos": {
+    "seq": 68,
+    "date": "2026-06-13"
+  },
+  "annona-reticulata": {
+    "seq": 69,
+    "date": "2026-06-13"
+  },
+  "stelechocarpus-burahol": {
+    "seq": 70,
+    "date": "2026-06-13"
+  },
+  "garcinia-dulcis": {
+    "seq": 71,
+    "date": "2026-06-13"
+  },
+  "garcinia-prainiana": {
+    "seq": 72,
+    "date": "2026-06-13"
+  },
+  "antidesma-bunius": {
+    "seq": 73,
+    "date": "2026-06-13"
+  },
+  "baccaurea-motleyana": {
+    "seq": 74,
+    "date": "2026-06-13"
+  },
+  "physalis-peruviana": {
+    "seq": 75,
+    "date": "2026-06-13"
+  },
+  "limonia-acidissima": {
+    "seq": 76,
+    "date": "2026-06-13"
+  },
+  "manilkara-kauki": {
+    "seq": 77,
+    "date": "2026-06-13"
+  },
+  "durio-kutejensis": {
+    "seq": 78,
+    "date": "2026-06-13"
+  },
+  "citrus-limon": {
+    "seq": 79,
+    "date": "2026-06-13"
+  },
+  "citrus-aurantiifolia": {
+    "seq": 80,
+    "date": "2026-06-13"
+  },
+  "citrus-paradisi": {
+    "seq": 81,
+    "date": "2026-06-13"
+  },
+  "citrus-junos": {
+    "seq": 82,
+    "date": "2026-06-13"
+  },
+  "citrus-japonica": {
+    "seq": 83,
+    "date": "2026-06-13"
+  },
+  "prunus-armeniaca": {
+    "seq": 84,
+    "date": "2026-06-13"
+  },
+  "prunus-salicina": {
+    "seq": 85,
+    "date": "2026-06-13"
+  },
+  "prunus-mume": {
+    "seq": 86,
+    "date": "2026-06-13"
+  },
+  "pyrus-communis": {
+    "seq": 87,
+    "date": "2026-06-13"
+  },
+  "eriobotrya-japonica": {
+    "seq": 88,
+    "date": "2026-06-13"
+  },
+  "cydonia-oblonga": {
+    "seq": 89,
+    "date": "2026-06-13"
+  },
+  "rubus-idaeus": {
+    "seq": 90,
+    "date": "2026-06-13"
+  },
+  "rubus-fruticosus": {
+    "seq": 91,
+    "date": "2026-06-13"
+  },
+  "vaccinium-macrocarpon": {
+    "seq": 92,
+    "date": "2026-06-13"
+  },
+  "ribes-nigrum": {
+    "seq": 93,
+    "date": "2026-06-13"
+  },
+  "ribes-uva-crispa": {
+    "seq": 94,
+    "date": "2026-06-13"
+  },
+  "olea-europaea": {
+    "seq": 95,
+    "date": "2026-06-13"
+  },
+  "morella-rubra": {
+    "seq": 96,
+    "date": "2026-06-13"
+  },
+  "akebia-quinata": {
+    "seq": 97,
+    "date": "2026-06-13"
+  },
+  "ziziphus-jujuba": {
+    "seq": 98,
+    "date": "2026-06-13"
+  },
+  "theobroma-cacao": {
+    "seq": 99,
+    "date": "2026-06-13"
+  }
+}

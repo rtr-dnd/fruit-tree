@@ -10,6 +10,7 @@ import { useLog } from '@/state/log'
 import { Breadcrumb } from './Breadcrumb'
 import { CoverageBadge } from './CoverageBadge'
 import { Preview } from './Preview'
+import { SpeciesRow } from './SpeciesRow'
 import { SyncBanner } from './SyncBanner'
 import { Badge } from '@/components/ui/badge'
 import { Switch } from '@/components/ui/switch'
@@ -70,28 +71,35 @@ export function TreeView({ node }: { node: TaxonNode }) {
       )}
 
       <ul className="space-y-2.5">
-        {visible.map((child) => (
-          <li
-            key={child.id}
-            onClick={() => router.push(`/n/${child.id}`)}
-            className={cn(
-              'bg-card relative cursor-pointer rounded-xl border p-3 pr-7 active:bg-accent',
-              untroddenFlags.get(child.id) && 'border-dashed',
-            )}
-          >
-            <div className="flex items-center justify-between gap-2">
-              <span className="font-semibold">
-                {nodeLabel(child)}
-                <Badge variant="secondary" className="ml-1.5 font-normal">
-                  {RANK_JA[child.rank]}
-                </Badge>
-              </span>
-              <CoverageBadge node={child} />
-            </div>
-            {child.rank !== 'SPECIES' && <Preview node={child} />}
-            <ChevronRight className="text-border absolute top-1/2 right-2 size-5 -translate-y-1/2" />
-          </li>
-        ))}
+        {visible.map((child) =>
+          // 種は果物カード行（サムネ＋チェック）、内部ノードは制覇バッジ＋プレビュー。
+          child.rank === 'SPECIES' ? (
+            <li key={child.id}>
+              <SpeciesRow node={child} />
+            </li>
+          ) : (
+            <li
+              key={child.id}
+              onClick={() => router.push(`/n/${child.id}`)}
+              className={cn(
+                'bg-card relative cursor-pointer rounded-xl border p-3 pr-7 active:bg-accent',
+                untroddenFlags.get(child.id) && 'border-dashed',
+              )}
+            >
+              <div className="flex items-center justify-between gap-2">
+                <span className="font-semibold">
+                  {nodeLabel(child)}
+                  <Badge variant="secondary" className="ml-1.5 font-normal">
+                    {RANK_JA[child.rank]}
+                  </Badge>
+                </span>
+                <CoverageBadge node={child} />
+              </div>
+              <Preview node={child} />
+              <ChevronRight className="text-border absolute top-1/2 right-2 size-5 -translate-y-1/2" />
+            </li>
+          ),
+        )}
         {visible.length === 0 && (
           <li className="text-muted-foreground py-6 text-center">
             {onlyUntrodden ? '未踏の枝はありません 🎉' : '配下のノードがありません'}
