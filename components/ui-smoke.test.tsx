@@ -21,7 +21,8 @@ import { TreeView } from './TreeView'
 import { DetailView } from './DetailView'
 import { SearchView } from './SearchView'
 import { MyPageView } from './MyPageView'
-import { getNode, ROOT_ID } from '@/lib/data/taxa'
+import { CheckListView } from './CheckListView'
+import { allSpecies, getNode, ROOT_ID } from '@/lib/data/taxa'
 
 function wrap(ui: ReactNode) {
   return render(<Providers>{ui}</Providers>)
@@ -62,5 +63,17 @@ describe('UI スモーク（Next + shadcn）', () => {
     wrap(<MyPageView />)
     expect(screen.getByText(/食べた種 \/ \d+/)).toBeTruthy()
     expect(screen.getByText('Google でログイン')).toBeTruthy()
+  })
+
+  it('チェックリストが全種を一覧表示する', () => {
+    const { container } = wrap(<CheckListView />)
+    expect(screen.getByText('チェックリスト')).toBeTruthy()
+    // フィルタチップ
+    expect(screen.getByText('未食')).toBeTruthy()
+    // 代表的な種が並ぶ
+    expect(screen.getAllByText('黄金果').length).toBeGreaterThan(0)
+    // 全種ぶんの行が描画される（トグル用チェック枠 = 行数）
+    const rows = container.querySelectorAll('[role="button"]')
+    expect(rows.length).toBe(allSpecies.length)
   })
 })
