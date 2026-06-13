@@ -38,7 +38,8 @@ export function DetailView({ node }: { node: TaxonNode }) {
             {node.names.ja || node.scientificName}
             {entry?.tried && (
               <Badge className="gap-1">
-                <Check className="size-3" /> 食べた
+                <Check className="size-3" />
+                {entry.form === 'processed' ? '加工品を食べた' : '生で食べた'}
               </Badge>
             )}
           </h1>

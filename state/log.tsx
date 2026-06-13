@@ -83,6 +83,7 @@ function saveQueue(scope: string, ids: string[]) {
 interface SupabaseRow {
   taxon_id: string
   tried: boolean
+  form: 'raw' | 'processed' | null
   rating: number | null
   notes: string | null
   place: string | null
@@ -94,6 +95,7 @@ function rowToEntry(r: SupabaseRow): FruitLogEntry {
   return {
     taxonId: r.taxon_id,
     tried: r.tried,
+    form: r.form,
     rating: r.rating,
     notes: r.notes,
     place: r.place,
@@ -107,6 +109,7 @@ function entryToRow(e: FruitLogEntry, userId: string) {
     user_id: userId,
     taxon_id: e.taxonId,
     tried: e.tried,
+    form: e.form ?? null,
     rating: e.rating ?? null,
     notes: e.notes ?? null,
     place: e.place ?? null,
@@ -215,9 +218,24 @@ export function LogProvider({ children }: { children: ReactNode }) {
   const save = useCallback<LogState['save']>(
     (taxonId, patch) => {
       const prev = logRef.current.get(taxonId)
+      // tried / form の整合を取る：
+      //  - form を渡したら tried=その有無、
+      //  - tried=false を渡したら form もクリア、
+      //  - どちらも無ければ既存を維持。
+      let form = prev?.form ?? null
+      let tried = prev?.tried ?? false
+      if ('form' in patch) {
+        form = patch.form ?? null
+        tried = form != null
+      }
+      if ('tried' in patch && patch.tried !== undefined) {
+        tried = patch.tried
+        if (!tried) form = null
+      }
       const entry: FruitLogEntry = {
         taxonId,
-        tried: patch.tried ?? prev?.tried ?? true,
+        tried,
+        form,
         rating: patch.rating ?? prev?.rating ?? null,
         notes: patch.notes ?? prev?.notes ?? null,
         place: patch.place ?? prev?.place ?? null,

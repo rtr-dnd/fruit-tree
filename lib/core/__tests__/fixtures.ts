@@ -72,6 +72,7 @@ export function makeLog(entries: Partial<FruitLogEntry>[]): FruitLog {
     log.set(e.taxonId!, {
       taxonId: e.taxonId!,
       tried: e.tried ?? true,
+      form: e.form ?? null,
       rating: e.rating ?? null,
       notes: e.notes ?? null,
       place: e.place ?? null,

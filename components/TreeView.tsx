@@ -56,7 +56,7 @@ export function TreeView({ node }: { node: TaxonNode }) {
             {RANK_JA[node.rank]}
           </Badge>
         </h1>
-        <CoverageBadge node={node} />
+        <CoverageBadge node={node} detailed />
       </header>
 
       {children.length > 0 && (

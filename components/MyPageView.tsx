@@ -118,7 +118,8 @@ export function MyPageView() {
                 <span className="flex min-w-0 flex-1 flex-col">
                   <span className="font-semibold">{nodeLabel(node)}</span>
                   <span className="text-muted-foreground text-xs">
-                    {entry.rating ? '★'.repeat(entry.rating) : ''}
+                    {entry.form === 'processed' ? '加工' : '生'}
+                    {entry.rating ? ` ・ ${'★'.repeat(entry.rating)}` : ''}
                     {entry.place ? ` ・ ${entry.place}` : ''}
                     {entry.triedDate ? ` ・ ${entry.triedDate}` : ''}
                   </span>

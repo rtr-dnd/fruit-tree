@@ -31,6 +31,8 @@ export function RecordEditor({ node }: { node: TaxonNode }) {
   }, [entry?.taxonId, entry?.updatedAt])
 
   const tried = entry?.tried ?? false
+  // 旧データ（tried=true・form無し）は「生で食べた」とみなす。
+  const form = entry?.form ?? (tried ? 'raw' : null)
 
   if (!canEdit) {
     return (
@@ -47,22 +49,29 @@ export function RecordEditor({ node }: { node: TaxonNode }) {
 
   const persist = (patch: Parameters<typeof save>[1]) => save(node.id, patch)
 
+  const options: { key: 'raw' | 'processed' | 'none'; label: string }[] = [
+    { key: 'raw', label: '生で食べた' },
+    { key: 'processed', label: '加工品を食べた' },
+    { key: 'none', label: '食べてない' },
+  ]
+  const current = tried ? form : 'none'
+
   return (
     <Card className="gap-4 py-5">
-      <div className="px-6">
-        <Button
-          variant={tried ? 'default' : 'outline'}
-          className="h-12 w-full text-base"
-          onClick={() => persist({ tried: !tried })}
-        >
-          {tried ? (
-            <>
-              <Check className="size-5" /> 食べた
-            </>
-          ) : (
-            '食べたを記録'
-          )}
-        </Button>
+      <div className="grid grid-cols-3 gap-2 px-6">
+        {options.map((o) => (
+          <Button
+            key={o.key}
+            variant={current === o.key ? 'default' : 'outline'}
+            className="h-auto flex-col gap-1 px-1 py-2.5 text-xs whitespace-normal"
+            onClick={() =>
+              persist(o.key === 'none' ? { tried: false } : { form: o.key })
+            }
+          >
+            {current === o.key && o.key !== 'none' && <Check className="size-4" />}
+            {o.label}
+          </Button>
+        ))}
       </div>
 
       {tried && (

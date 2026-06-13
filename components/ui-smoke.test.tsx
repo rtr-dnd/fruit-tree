@@ -52,9 +52,11 @@ describe('UI スモーク（Next + shadcn）', () => {
     expect(screen.queryByText('ライチ')).toBeNull()
   })
 
-  it('ローカル専用モードでは記録ボタンが有効', () => {
+  it('ローカル専用モードでは3状態の記録ボタンが出る', () => {
     wrap(<DetailView node={getNode('pouteria-caimito')!} />)
-    expect(screen.getByText('食べたを記録')).toBeTruthy()
+    expect(screen.getByText('生で食べた')).toBeTruthy()
+    expect(screen.getByText('加工品を食べた')).toBeTruthy()
+    expect(screen.getByText('食べてない')).toBeTruthy()
   })
 
   it('検索ボックスが描画される', () => {

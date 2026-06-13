@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
-import { Check, ChevronRight } from 'lucide-react'
+import { Check, ChevronRight, Package } from 'lucide-react'
 import { nodeLabel, type TaxonNode } from '@/lib/core'
 import { useLog } from '@/state/log'
 import { useAuth } from '@/state/auth'
@@ -10,9 +10,9 @@ import { FruitImage } from './FruitImage'
 import { cn } from '@/lib/utils'
 
 /**
- * 種（フルーツ）1件の行。サムネ＋和名＋サブ情報＋チェックトグル。
- * チェックマークだけがトグル、それ以外をタップすると詳細へ遷移。
- * ツリー（属配下）とリストで共用。
+ * 種（フルーツ）1件の行。サムネ＋和名＋サブ情報＋チェック。
+ * チェックは「食べてない → 生で食べた → 加工品を食べた → …」を循環。
+ * それ以外をタップすると詳細へ遷移。ツリー（属配下）とリストで共用。
  */
 export function SpeciesRow({
   node,
@@ -24,15 +24,21 @@ export function SpeciesRow({
   const router = useRouter()
   const { log, save, canEdit } = useLog()
   const { signInWithGoogle } = useAuth()
-  const tried = !!log.get(node.id)?.tried
+  const entry = log.get(node.id)
+  const tried = !!entry?.tried
+  // 旧データ（tried・form無し）は「生」とみなす。
+  const form = entry?.form ?? (tried ? 'raw' : null)
   const sub = subtitle ?? node.names.en ?? node.scientificName
 
-  const toggle = () => {
+  // 食べてない → 生 → 加工品 → 食べてない。
+  const cycle = () => {
     if (!canEdit) {
       void signInWithGoogle()
       return
     }
-    save(node.id, { tried: !tried })
+    if (!tried) save(node.id, { form: 'raw' })
+    else if (form === 'raw') save(node.id, { form: 'processed' })
+    else save(node.id, { tried: false })
   }
 
   return (
@@ -50,20 +56,30 @@ export function SpeciesRow({
     >
       <button
         type="button"
-        aria-label={tried ? '食べた済みを解除' : '食べたにする'}
+        aria-label={
+          !tried
+            ? '生で食べたにする'
+            : form === 'raw'
+              ? '加工品を食べたにする'
+              : '食べてないに戻す'
+        }
         aria-pressed={tried}
         onClick={(e) => {
           e.stopPropagation()
-          toggle()
+          cycle()
         }}
         className={cn(
-          'flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md border-2',
-          tried
-            ? 'border-primary bg-primary text-primary-foreground'
-            : 'border-muted-foreground/40 hover:border-primary/60',
+          'flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md border-2 text-white',
+          form === 'raw' && 'border-primary bg-primary',
+          form === 'processed' && 'border-[var(--amber)] bg-[var(--amber)]',
+          !tried && 'border-muted-foreground/40 text-transparent hover:border-primary/60',
         )}
       >
-        {tried && <Check className="size-5" strokeWidth={3} />}
+        {form === 'processed' ? (
+          <Package className="size-4" strokeWidth={2.5} />
+        ) : (
+          <Check className="size-5" strokeWidth={3} />
+        )}
       </button>
 
       <FruitImage
@@ -80,6 +96,19 @@ export function SpeciesRow({
           <span className="text-muted-foreground truncate text-xs">{sub}</span>
         )}
       </span>
+
+      {tried && (
+        <span
+          className={cn(
+            'shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium',
+            form === 'processed'
+              ? 'bg-[var(--amber)]/15 text-[var(--amber)]'
+              : 'bg-primary/10 text-primary',
+          )}
+        >
+          {form === 'processed' ? '加工' : '生'}
+        </span>
+      )}
 
       <ChevronRight className="text-border size-5 shrink-0" />
     </div>

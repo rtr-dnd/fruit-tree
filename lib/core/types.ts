@@ -76,9 +76,14 @@ export interface ResolvedSpecies {
 }
 
 // ── ユーザー記録（§6.2 fruit_log）。 ──
+/** 食べた形態：生で / 加工品で（§ ユーザー要望）。 */
+export type TriedForm = 'raw' | 'processed'
+
 export interface FruitLogEntry {
   taxonId: string
   tried: boolean
+  /** tried のとき、生(raw)か加工品(processed)か。未設定＝区別なし。 */
+  form?: TriedForm | null
   rating?: number | null
   notes?: string | null
   place?: string | null
