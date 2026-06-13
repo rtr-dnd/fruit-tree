@@ -94,14 +94,17 @@ async function main() {
 
     const m = wd.get(gbif.usageKey)
     const ex = extractFor(m)
-    // 和名は Wikidata ラベル優先、無ければシードの和名（括弧書きを整理）。
+    // 表示名は「常識的な和名」を最優先＝シードに書いた名前（括弧書きは別名へ）。
+    // Wikidata の正式和名（例: レイシ・カキノキ・ヌマスノキ）は検索用の別名にまわす（§4.4）。
     const seedJa = s.ja.replace(/（.*?）/g, '').trim() || s.ja
-    const chosenJa = m?.ja ?? seedJa
-    // 別名：シードの和名/英名＋括弧内の通称（採用名と重複しないもの）。表記ゆれ耐性（§4.4）。
-    const parenAliases = [...s.ja.matchAll(/（(.*?)）/g)].map((mm) => mm[1])
-    const aliases = [...new Set([seedJa, s.ja, s.en, ...parenAliases])].filter(
-      (a) => a && a !== chosenJa,
+    const chosenJa = seedJa
+    // 括弧内は別名（「,、/」区切りで分割）。Wikidata 正式名・英名も別名に。
+    const parenAliases = [...s.ja.matchAll(/（(.*?)）/g)].flatMap((mm) =>
+      mm[1].split(/[,、/]/).map((x) => x.trim()),
     )
+    const aliases = [
+      ...new Set([m?.ja, s.en, ...parenAliases].filter(Boolean) as string[]),
+    ].filter((a) => a !== chosenJa)
     return {
       id: slugify(gbif.canonicalName),
       scientificName: gbif.canonicalName,

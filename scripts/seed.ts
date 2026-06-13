@@ -28,14 +28,14 @@ export const seed: SeedFruit[] = [
   { ja: 'リュウガン（ロンガン）', en: 'Longan', sci: 'Dimocarpus longan' },
   { ja: 'ランブータン', en: 'Rambutan', sci: 'Nephelium lappaceum' },
   { ja: 'マンゴー', en: 'Mango', sci: 'Mangifera indica' },
-  { ja: 'ウンシュウミカン', en: 'Mandarin orange', sci: 'Citrus reticulata' },
-  { ja: 'ネーブルオレンジ', en: 'Sweet orange', sci: 'Citrus sinensis' },
+  { ja: 'みかん（温州みかん）', en: 'Mandarin orange', sci: 'Citrus reticulata' },
+  { ja: 'オレンジ（ネーブル）', en: 'Sweet orange', sci: 'Citrus sinensis' },
 
   // ── バラ目 Rosales ──
   { ja: 'リンゴ', en: 'Apple', sci: 'Malus domestica' },
   { ja: 'ニホンナシ', en: 'Nashi pear', sci: 'Pyrus pyrifolia' },
   { ja: 'モモ', en: 'Peach', sci: 'Prunus persica' },
-  { ja: 'オウトウ（さくらんぼ）', en: 'Cherry', sci: 'Prunus avium' },
+  { ja: 'さくらんぼ（オウトウ）', en: 'Cherry', sci: 'Prunus avium' },
   { ja: 'イチゴ', en: 'Strawberry', sci: 'Fragaria ananassa' },
   { ja: 'イチジク', en: 'Fig', sci: 'Ficus carica' },
   { ja: 'クワ（マルベリー）', en: 'Mulberry', sci: 'Morus alba' },
@@ -138,4 +138,38 @@ export const seed: SeedFruit[] = [
   { ja: 'サオケチック（Sawo kecik）', en: 'Caqui', sci: 'Manilkara kauki' },
   // アオイ科（ドリアンと同属）
   { ja: 'ライ（Lai, ボルネオドリアン）', en: 'Red-fleshed durian', sci: 'Durio kutejensis' },
+
+  // ── 身近な温帯フルーツ ──
+  // ミカン科 Citrus（柑橘の仲間）
+  { ja: 'レモン', en: 'Lemon', sci: 'Citrus limon' },
+  { ja: 'ライム', en: 'Lime', sci: 'Citrus aurantiifolia' },
+  { ja: 'グレープフルーツ', en: 'Grapefruit', sci: 'Citrus paradisi' },
+  { ja: 'ゆず', en: 'Yuzu', sci: 'Citrus junos' },
+  { ja: 'きんかん（金柑）', en: 'Kumquat', sci: 'Citrus japonica' },
+  // バラ科 Prunus（モモ・さくらんぼと同属）
+  { ja: 'あんず（杏）', en: 'Apricot', sci: 'Prunus armeniaca' },
+  { ja: 'すもも（プラム）', en: 'Plum', sci: 'Prunus salicina' },
+  { ja: 'うめ（梅）', en: 'Japanese apricot', sci: 'Prunus mume' },
+  // バラ科（リンゴ・ナシの仲間）
+  { ja: '洋なし（ラ・フランス）', en: 'European pear', sci: 'Pyrus communis' },
+  { ja: 'びわ', en: 'Loquat', sci: 'Eriobotrya japonica' },
+  { ja: 'マルメロ', en: 'Quince', sci: 'Cydonia oblonga' },
+  // バラ科 Rubus（キイチゴの仲間）
+  { ja: 'ラズベリー', en: 'Raspberry', sci: 'Rubus idaeus' },
+  { ja: 'ブラックベリー', en: 'Blackberry', sci: 'Rubus fruticosus' },
+  // ツツジ科（ブルーベリーと同属）
+  { ja: 'クランベリー', en: 'Cranberry', sci: 'Vaccinium macrocarpon' },
+  // スグリ科（ユキノシタ目）
+  { ja: 'カシス（クロスグリ）', en: 'Blackcurrant', sci: 'Ribes nigrum' },
+  { ja: 'グーズベリー（スグリ）', en: 'Gooseberry', sci: 'Ribes uva-crispa' },
+  // シソ目 Lamiales / モクセイ科（系統樹に新しい目が生える）
+  { ja: 'オリーブ', en: 'Olive', sci: 'Olea europaea' },
+  // ブナ目 Fagales / ヤマモモ科
+  { ja: 'やまもも', en: 'Bayberry', sci: 'Morella rubra' },
+  // キンポウゲ目 Ranunculales / アケビ科
+  { ja: 'アケビ', en: 'Akebia', sci: 'Akebia quinata' },
+  // バラ目 / クロウメモドキ科（インドナツメと同属）
+  { ja: 'なつめ（棗）', en: 'Jujube', sci: 'Ziziphus jujuba' },
+  // アオイ目 / アオイ科（ドリアンと同目）
+  { ja: 'カカオ', en: 'Cacao', sci: 'Theobroma cacao' },
 ]

@@ -45,8 +45,11 @@ describe('UI スモーク（Next + shadcn）', () => {
     expect(screen.getAllByText('黄金果').length).toBeGreaterThan(0)
     expect(screen.getByText('近い仲間')).toBeTruthy()
     expect(screen.getByText('同じ目の別の科')).toBeTruthy()
-    expect(screen.getByText('カキノキ')).toBeTruthy()
-    expect(screen.queryByText('レイシ')).toBeNull()
+    // 柿は常識的な表示名「柿」で出る（正式名カキノキは別名へ）
+    expect(screen.getByText('柿')).toBeTruthy()
+    expect(screen.queryByText('カキノキ')).toBeNull()
+    // ライチ（レイシ）は目が異なるので関係リストに出ない
+    expect(screen.queryByText('ライチ')).toBeNull()
   })
 
   it('ローカル専用モードでは記録ボタンが有効', () => {
