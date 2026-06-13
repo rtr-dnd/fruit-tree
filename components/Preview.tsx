@@ -3,13 +3,14 @@
 import Link from 'next/link'
 import { Check } from 'lucide-react'
 import { nodeLabel, representativePreview, type TaxonNode } from '@/lib/core'
-import { tree } from '@/lib/data/taxa'
+import { useTree } from '@/state/tree'
 import { useLog } from '@/state/log'
 import { cn } from '@/lib/utils'
 import { FruitImage } from './FruitImage'
 
 /** 果物プレビュー：代表サムネ（食べた種を優先・強調 / §4.1・§5.6）。 */
 export function Preview({ node }: { node: TaxonNode }) {
+  const { tree } = useTree()
   const { log } = useLog()
   const picks = representativePreview(tree, node, log, 4)
   if (picks.length === 0) return null

@@ -394,5 +394,65 @@
   "theobroma-cacao": {
     "seq": 99,
     "date": "2026-06-13"
+  },
+  "citrus-natsudaidai": {
+    "seq": 100,
+    "date": "2026-06-13"
+  },
+  "citrus-aurantium": {
+    "seq": 101,
+    "date": "2026-06-13"
+  },
+  "citrus-sudachi": {
+    "seq": 102,
+    "date": "2026-06-13"
+  },
+  "citrus-sphaerocarpa": {
+    "seq": 103,
+    "date": "2026-06-13"
+  },
+  "citrus-hassaku": {
+    "seq": 104,
+    "date": "2026-06-13"
+  },
+  "citrus-iyo": {
+    "seq": 105,
+    "date": "2026-06-13"
+  },
+  "citrus-depressa": {
+    "seq": 106,
+    "date": "2026-06-13"
+  },
+  "prunus-domestica": {
+    "seq": 107,
+    "date": "2026-06-13"
+  },
+  "pseudocydonia-sinensis": {
+    "seq": 108,
+    "date": "2026-06-13"
+  },
+  "prunus-tomentosa": {
+    "seq": 109,
+    "date": "2026-06-13"
+  },
+  "elaeagnus-multiflora": {
+    "seq": 110,
+    "date": "2026-06-13"
+  },
+  "lycium-chinense": {
+    "seq": 111,
+    "date": "2026-06-13"
+  },
+  "lonicera-caerulea": {
+    "seq": 112,
+    "date": "2026-06-13"
+  },
+  "vaccinium-vitis-idaea": {
+    "seq": 113,
+    "date": "2026-06-13"
+  },
+  "euterpe-oleracea": {
+    "seq": 114,
+    "date": "2026-06-13"
   }
 }

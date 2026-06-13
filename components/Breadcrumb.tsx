@@ -1,10 +1,13 @@
+'use client'
+
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { nodeLabel, type TaxonNode } from '@/lib/core'
-import { getNode } from '@/lib/data/taxa'
+import { useTree } from '@/state/tree'
 
 /** パンくず（§4.1）。タップで任意の祖先に戻れる。 */
 export function Breadcrumb({ node }: { node: TaxonNode }) {
+  const { getNode } = useTree()
   const ancestors = node.lineage
     .map((id) => getNode(id))
     .filter((n): n is TaxonNode => !!n)

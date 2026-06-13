@@ -4,20 +4,20 @@ import { useMemo } from 'react'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { nodeLabel } from '@/lib/core'
-import { allSpecies, getNode, tree } from '@/lib/data/taxa'
+import { useTree } from '@/state/tree'
 import { useAuth } from '@/state/auth'
 import { useLog } from '@/state/log'
 import { FruitImage } from './FruitImage'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 
-function countRanks(rank: 'FAMILY' | 'ORDER'): number {
-  return Object.values(tree.nodes).filter((n) => n.rank === rank).length
-}
-
 export function MyPageView() {
   const { user, signInWithGoogle, signOut, configured } = useAuth()
+  const { tree, getNode, allSpecies } = useTree()
   const { log } = useLog()
+
+  const countRanks = (rank: 'FAMILY' | 'ORDER') =>
+    Object.values(tree.nodes).filter((n) => n.rank === rank).length
 
   const stats = useMemo(() => {
     const tried = [...log.values()].filter((e) => e.tried)
@@ -36,7 +36,7 @@ export function MyPageView() {
       orders: orders.size,
       totalOrders: countRanks('ORDER'),
     }
-  }, [log])
+  }, [log, tree, getNode, allSpecies])
 
   const triedList = useMemo(
     () =>
@@ -47,7 +47,7 @@ export function MyPageView() {
         .sort((a, b) =>
           (b.entry.triedDate ?? '').localeCompare(a.entry.triedDate ?? ''),
         ),
-    [log],
+    [log, getNode],
   )
 
   return (

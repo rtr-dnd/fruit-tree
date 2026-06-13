@@ -3,13 +3,14 @@
 import Link from 'next/link'
 import { Check, ChevronRight } from 'lucide-react'
 import { buildRelationshipList, nodeLabel, type TaxonNode } from '@/lib/core'
-import { tree } from '@/lib/data/taxa'
+import { useTree } from '@/state/tree'
 import { useLog } from '@/state/log'
 import { Badge } from '@/components/ui/badge'
 import { FruitImage } from './FruitImage'
 
 /** 関係リスト（近い順・見出しグルーピング / §4.2・§5.3）。 */
 export function RelationshipList({ node }: { node: TaxonNode }) {
+  const { tree } = useTree()
   const { log } = useLog()
   const rel = buildRelationshipList(node.id, tree, log)
 

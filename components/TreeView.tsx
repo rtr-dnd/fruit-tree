@@ -4,8 +4,8 @@ import { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ChevronRight } from 'lucide-react'
 import { nodeLabel, untrodden, type TaxonNode } from '@/lib/core'
-import { getNode, tree } from '@/lib/data/taxa'
 import { RANK_JA } from '@/lib/labels'
+import { useTree } from '@/state/tree'
 import { useLog } from '@/state/log'
 import { Breadcrumb } from './Breadcrumb'
 import { CoverageBadge } from './CoverageBadge'
@@ -19,6 +19,7 @@ import { cn } from '@/lib/utils'
 
 export function TreeView({ node }: { node: TaxonNode }) {
   const router = useRouter()
+  const { tree, getNode } = useTree()
   const { log } = useLog()
   const [onlyUntrodden, setOnlyUntrodden] = useState(false)
 
@@ -27,12 +28,12 @@ export function TreeView({ node }: { node: TaxonNode }) {
       node.childrenIds
         .map((id) => getNode(id))
         .filter((n): n is TaxonNode => !!n),
-    [node],
+    [node, getNode],
   )
 
   const untroddenFlags = useMemo(
     () => new Map(children.map((c) => [c.id, untrodden(tree, c, log)])),
-    [children, log],
+    [children, log, tree],
   )
 
   const untroddenCount = children.filter((c) => untroddenFlags.get(c.id)).length

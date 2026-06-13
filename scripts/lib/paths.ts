@@ -11,3 +11,6 @@ export const TAXA_OUT_PATH = join(here, '..', '..', 'lib', 'data', 'taxa.json')
 
 /** 種ごとの「追加日・追加順」台帳（コミット対象。新規種のみ追記）。 */
 export const ADDED_DATES_PATH = join(here, '..', '..', 'lib', 'data', 'added-dates.json')
+
+/** buildTaxonTree の入力（ResolvedSpecies[]）。アプリ内追加のマージ再構築に使う。 */
+export const RESOLVED_BUNDLE_PATH = join(here, '..', '..', 'lib', 'data', 'resolved.json')

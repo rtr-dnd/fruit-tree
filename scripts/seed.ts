@@ -172,4 +172,25 @@ export const seed: SeedFruit[] = [
   { ja: 'なつめ（棗）', en: 'Jujube', sci: 'Ziziphus jujuba' },
   // アオイ目 / アオイ科（ドリアンと同目）
   { ja: 'カカオ', en: 'Cacao', sci: 'Theobroma cacao' },
+
+  // ── 日本で常識的な果物（追加コア）──
+  // 和柑橘（ミカン科 Citrus）
+  { ja: '夏みかん（ナツダイダイ）', en: 'Natsumikan', sci: 'Citrus natsudaidai' },
+  { ja: 'だいだい（橙）', en: 'Bitter orange', sci: 'Citrus aurantium' },
+  { ja: 'すだち', en: 'Sudachi', sci: 'Citrus sudachi hort. ex Shirai' },
+  { ja: 'かぼす', en: 'Kabosu', sci: 'Citrus sphaerocarpa' },
+  { ja: 'はっさく（八朔）', en: 'Hassaku', sci: 'Citrus hassaku' },
+  { ja: 'いよかん（伊予柑）', en: 'Iyokan', sci: 'Citrus iyo' },
+  { ja: 'シークヮーサー', en: 'Shikuwasa', sci: 'Citrus depressa' },
+  // 核果・仁果（バラ科）
+  { ja: 'プルーン（西洋すもも）', en: 'European plum', sci: 'Prunus domestica' },
+  { ja: 'カリン（花梨）', en: 'Chinese quince', sci: 'Pseudocydonia sinensis' },
+  { ja: 'ゆすらうめ（梅桃）', en: 'Nanking cherry', sci: 'Prunus tomentosa' },
+  // 在来・ベリー類
+  { ja: 'グミ（夏茱萸）', en: 'Cherry silverberry', sci: 'Elaeagnus multiflora' },
+  { ja: 'クコ（枸杞/ゴジベリー）', en: 'Goji berry', sci: 'Lycium chinense' },
+  { ja: 'ハスカップ', en: 'Haskap', sci: 'Lonicera caerulea' },
+  { ja: 'こけもも（リンゴンベリー）', en: 'Lingonberry', sci: 'Vaccinium vitis-idaea' },
+  // スーパーフード（ヤシ科）
+  { ja: 'アサイー', en: 'Acai', sci: 'Euterpe oleracea' },
 ]

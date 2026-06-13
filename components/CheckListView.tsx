@@ -1,17 +1,10 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { nodeLabel } from '@/lib/core'
-import { allSpecies, getNode } from '@/lib/data/taxa'
+import { useTree } from '@/state/tree'
 import { useLog } from '@/state/log'
 import { SpeciesRow } from './SpeciesRow'
-import { Input } from '@/components/ui/input'
-
-// 最近追加された順（addedSeq 降順）に並べる。同値や未設定は和名順で安定化。
-const sortedSpecies = [...allSpecies].sort((a, b) => {
-  const d = (b.addedSeq ?? 0) - (a.addedSeq ?? 0)
-  return d !== 0 ? d : nodeLabel(a).localeCompare(nodeLabel(b), 'ja')
-})
 
 function formatAdded(iso?: string): string {
   if (!iso) return ''
@@ -20,22 +13,23 @@ function formatAdded(iso?: string): string {
 }
 
 export function CheckListView() {
+  const { getNode, allSpecies } = useTree()
   const { log } = useLog()
-  const [q, setQ] = useState('')
+
+  // 最近追加された順（addedSeq 降順）。同値・未設定は和名順で安定化。
+  const sortedSpecies = useMemo(
+    () =>
+      [...allSpecies].sort((a, b) => {
+        const d = (b.addedSeq ?? 0) - (a.addedSeq ?? 0)
+        return d !== 0 ? d : nodeLabel(a).localeCompare(nodeLabel(b), 'ja')
+      }),
+    [allSpecies],
+  )
 
   const triedCount = useMemo(
     () => sortedSpecies.filter((s) => log.get(s.id)?.tried).length,
-    [log],
+    [log, sortedSpecies],
   )
-
-  const nq = q.trim().toLowerCase()
-  const visible = nq
-    ? sortedSpecies.filter((s) =>
-        `${s.names.ja ?? ''} ${s.names.en ?? ''} ${s.scientificName} ${(s.searchAliases ?? []).join(' ')}`
-          .toLowerCase()
-          .includes(nq),
-      )
-    : sortedSpecies
 
   return (
     <div className="p-4 pb-6">
@@ -47,18 +41,8 @@ export function CheckListView() {
         </span>
       </header>
 
-      <div className="mb-3">
-        <Input
-          type="search"
-          value={q}
-          placeholder="絞り込み（和名・英名・学名）"
-          className="h-10 rounded-full"
-          onChange={(e) => setQ(e.target.value)}
-        />
-      </div>
-
       <ul className="space-y-1.5">
-        {visible.map((s) => {
+        {sortedSpecies.map((s) => {
           const family = s.ancestors.FAMILY ? getNode(s.ancestors.FAMILY) : undefined
           const added = formatAdded(s.addedAt)
           const subtitle =
@@ -70,11 +54,6 @@ export function CheckListView() {
             </li>
           )
         })}
-        {visible.length === 0 && (
-          <li className="text-muted-foreground py-6 text-center">
-            該当する果物がありません
-          </li>
-        )}
       </ul>
     </div>
   )

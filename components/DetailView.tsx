@@ -1,18 +1,26 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { Check } from 'lucide-react'
 import { nodeLabel, type TaxonNode } from '@/lib/core'
 import { useLog } from '@/state/log'
+import { useSupplemental } from '@/state/supplemental'
 import { Breadcrumb } from './Breadcrumb'
 import { FruitImage } from './FruitImage'
 import { RecordEditor } from './RecordEditor'
 import { RelationshipList } from './RelationshipList'
 import { SyncBanner } from './SyncBanner'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 
 export function DetailView({ node }: { node: TaxonNode }) {
+  const router = useRouter()
   const { get } = useLog()
+  const { entries, isAdmin, remove } = useSupplemental()
   const entry = get(node.id)
+
+  // この種がアプリ内追加（共有カタログ）由来か。
+  const supplemental = entries.find((e) => e.resolved.id === node.id)
 
   return (
     <div className="p-4 pb-6">
@@ -63,6 +71,24 @@ export function DetailView({ node }: { node: TaxonNode }) {
 
       <h2 className="mb-3 text-base font-semibold">近い仲間</h2>
       <RelationshipList node={node} />
+
+      {supplemental && isAdmin && (
+        <div className="mt-6 border-t pt-4">
+          <Button
+            variant="link"
+            className="text-destructive h-auto p-0"
+            onClick={async () => {
+              if (!confirm(`「${nodeLabel(node)}」を共有カタログから削除しますか？`))
+                return
+              const res = await remove(supplemental.gbifUsageKey)
+              if (res.ok) router.push('/')
+              else alert(res.message ?? '削除に失敗しました')
+            }}
+          >
+            管理者：この追加を削除
+          </Button>
+        </div>
+      )}
     </div>
   )
 }

@@ -9,7 +9,12 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { dirname } from 'node:path'
 import { buildTaxonTree } from '../lib/core/tree'
 import type { ResolvedSpecies } from '../lib/core/types'
-import { RESOLVED_PATH, TAXA_OUT_PATH as OUT_PATH, ADDED_DATES_PATH } from './lib/paths'
+import {
+  RESOLVED_PATH,
+  TAXA_OUT_PATH as OUT_PATH,
+  ADDED_DATES_PATH,
+  RESOLVED_BUNDLE_PATH,
+} from './lib/paths'
 
 interface AddedRecord {
   seq: number
@@ -72,6 +77,25 @@ async function main() {
 
   await mkdir(dirname(OUT_PATH), { recursive: true })
   await writeFile(OUT_PATH, JSON.stringify(tree), 'utf8')
+  // アプリ内追加のマージ再構築用に、入力 ResolvedSpecies[] もバンドルへ。
+  // 祖先(内部ノード)の description/wikipedia は表示に使わないので落として軽量化。
+  const slim = resolved.map((s) => ({
+    id: s.id,
+    scientificName: s.scientificName,
+    names: s.names,
+    imageUrl: s.imageUrl ?? null,
+    wikipediaUrl: s.wikipediaUrl ?? null,
+    description: s.description ?? null,
+    searchAliases: s.searchAliases,
+    classification: s.classification.map((c) => ({
+      rank: c.rank,
+      id: c.id,
+      scientificName: c.scientificName,
+      names: c.names ?? {},
+      imageUrl: c.imageUrl ?? null,
+    })),
+  }))
+  await writeFile(RESOLVED_BUNDLE_PATH, JSON.stringify(slim), 'utf8')
 
   const root = tree.nodes[tree.rootId]
   console.log(`✔ ${OUT_PATH}`)

@@ -2,10 +2,11 @@
 
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
-import { Check, ChevronRight } from 'lucide-react'
+import { Check, ChevronRight, Plus } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { nodeLabel, search } from '@/lib/core'
-import { searchIndex } from '@/lib/data/taxa'
 import { RANK_JA } from '@/lib/labels'
+import { useTree } from '@/state/tree'
 import { useLog } from '@/state/log'
 import { FruitImage } from './FruitImage'
 import { Input } from '@/components/ui/input'
@@ -13,8 +14,9 @@ import { Badge } from '@/components/ui/badge'
 
 export function SearchView() {
   const [q, setQ] = useState('')
+  const { searchIndex } = useTree()
   const { log } = useLog()
-  const results = useMemo(() => search(q, searchIndex, 60), [q])
+  const results = useMemo(() => search(q, searchIndex, 60), [q, searchIndex])
 
   return (
     <div className="p-4 pb-6">
@@ -30,9 +32,16 @@ export function SearchView() {
       </div>
 
       {q.trim().length > 0 && results.length === 0 && (
-        <div className="text-muted-foreground py-8 text-center">
-          <p>「{q}」に該当なし。</p>
-          <p className="mt-1 text-xs">学名や英名でも試してみてください。</p>
+        <div className="flex flex-col items-center gap-3 py-8 text-center">
+          <p className="text-muted-foreground">「{q}」は収録されていません。</p>
+          <Button asChild>
+            <Link href={`/add?q=${encodeURIComponent(q.trim())}`}>
+              <Plus className="size-4" />「{q.trim()}」を追加する
+            </Link>
+          </Button>
+          <p className="text-muted-foreground text-xs">
+            学名や英名でも探せます。
+          </p>
         </div>
       )}
 

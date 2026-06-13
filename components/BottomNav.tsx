@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ListChecks, Search, TreePine, User } from 'lucide-react'
+import { ListChecks, PlusCircle, Search, TreePine, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const items = [
   { href: '/', label: 'ツリー', icon: TreePine, match: (p: string) => p === '/' || p.startsWith('/n') },
   { href: '/all', label: 'リスト', icon: ListChecks, match: (p: string) => p.startsWith('/all') },
+  { href: '/add', label: '追加', icon: PlusCircle, match: (p: string) => p.startsWith('/add') },
   { href: '/search', label: '検索', icon: Search, match: (p: string) => p.startsWith('/search') },
   { href: '/me', label: 'マイページ', icon: User, match: (p: string) => p.startsWith('/me') },
 ]
