@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { Loader2, Search } from 'lucide-react'
 import { resolveFruit, type ResolveResult } from '@/lib/resolve-client'
 import { useTree } from '@/state/tree'
-import { useSupplemental } from '@/state/supplemental'
+import { useCatalog } from '@/state/catalog'
 import { useAuth } from '@/state/auth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -18,7 +18,7 @@ export function AddFruitView() {
   const searchParams = useSearchParams()
   const initialQ = searchParams.get('q') ?? ''
   const { getNode } = useTree()
-  const { add, canAdd, localOnly } = useSupplemental()
+  const { add, canAdd, localOnly } = useCatalog()
   const { signInWithGoogle } = useAuth()
 
   const [q, setQ] = useState(initialQ)
@@ -56,10 +56,10 @@ export function AddFruitView() {
   const alreadyExists = resolved ? !!getNode(resolved.id) : false
 
   const onAdd = async () => {
-    if (!resolved || !result?.gbifUsageKey) return
+    if (!resolved) return
     setAdding(true)
     setError(null)
-    const res = await add(result.gbifUsageKey, resolved)
+    const res = await add(resolved)
     setAdding(false)
     if (res.ok) router.push(`/n/${resolved.id}`)
     else setError(res.message ?? '追加に失敗しました')

@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { ChevronRight } from 'lucide-react'
 import { nodeLabel, untrodden, type TaxonNode } from '@/lib/core'
@@ -13,15 +13,12 @@ import { Preview } from './Preview'
 import { SpeciesRow } from './SpeciesRow'
 import { SyncBanner } from './SyncBanner'
 import { Badge } from '@/components/ui/badge'
-import { Switch } from '@/components/ui/switch'
-import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 
 export function TreeView({ node }: { node: TaxonNode }) {
   const router = useRouter()
   const { tree, getNode } = useTree()
   const { log } = useLog()
-  const [onlyUntrodden, setOnlyUntrodden] = useState(false)
 
   const children = useMemo(
     () =>
@@ -35,14 +32,6 @@ export function TreeView({ node }: { node: TaxonNode }) {
     () => new Map(children.map((c) => [c.id, untrodden(tree, c, log)])),
     [children, log, tree],
   )
-
-  const untroddenCount = children.filter((c) => untroddenFlags.get(c.id)).length
-  const visible = onlyUntrodden
-    ? children.filter((c) => untroddenFlags.get(c.id))
-    : children
-
-  const childRank = children[0]?.rank
-  const childRankJa = childRank ? RANK_JA[childRank] : 'グループ'
 
   return (
     <div className="p-4 pb-6">
@@ -59,20 +48,8 @@ export function TreeView({ node }: { node: TaxonNode }) {
         <CoverageBadge node={node} detailed />
       </header>
 
-      {children.length > 0 && (
-        <div className="bg-card mb-3 flex items-center justify-between gap-2 rounded-xl border px-3 py-2 text-sm">
-          <Label className="cursor-pointer">
-            <Switch checked={onlyUntrodden} onCheckedChange={setOnlyUntrodden} />
-            未踏のみ表示
-          </Label>
-          <span className="text-muted-foreground">
-            未踏の{childRankJa} {untroddenCount} / 総 {children.length}
-          </span>
-        </div>
-      )}
-
       <ul className="space-y-2.5">
-        {visible.map((child) =>
+        {children.map((child) =>
           // 種は果物カード行（サムネ＋チェック）、内部ノードは制覇バッジ＋プレビュー。
           child.rank === 'SPECIES' ? (
             <li key={child.id}>
@@ -101,9 +78,9 @@ export function TreeView({ node }: { node: TaxonNode }) {
             </li>
           ),
         )}
-        {visible.length === 0 && (
+        {children.length === 0 && (
           <li className="text-muted-foreground py-6 text-center">
-            {onlyUntrodden ? '未踏の枝はありません 🎉' : '配下のノードがありません'}
+            配下のノードがありません
           </li>
         )}
       </ul>

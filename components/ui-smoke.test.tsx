@@ -22,7 +22,12 @@ import { DetailView } from './DetailView'
 import { SearchView } from './SearchView'
 import { MyPageView } from './MyPageView'
 import { CheckListView } from './CheckListView'
-import { allSpecies, getNode, ROOT_ID } from '@/lib/data/taxa'
+import { defaultCatalogTree } from '@/lib/data/catalog'
+
+const tree = defaultCatalogTree.tree
+const ROOT_ID = tree.rootId
+const getNode = (id: string) => tree.nodes[id]
+const allSpecies = Object.values(tree.nodes).filter((n) => n.rank === 'SPECIES')
 
 function wrap(ui: ReactNode) {
   return render(<Providers>{ui}</Providers>)
@@ -34,10 +39,10 @@ afterEach(() => {
 })
 
 describe('UI スモーク（Next + shadcn）', () => {
-  it('ツリーが描画され、未踏フィルタが出る', () => {
-    wrap(<TreeView node={getNode(ROOT_ID)!} />)
-    expect(screen.getByText('未踏のみ表示')).toBeTruthy()
-    expect(screen.getByText(/未踏の.+\s\d+\s\/\s総\s\d+/)).toBeTruthy()
+  it('ツリーが描画され、子ノードが並ぶ', () => {
+    const { container } = wrap(<TreeView node={getNode(ROOT_ID)!} />)
+    // ルート配下のノード行が描画される
+    expect(container.querySelectorAll('li').length).toBeGreaterThan(0)
   })
 
   it('黄金果の詳細：関係リストに「同じ目の別の科」と柿(カキノキ)が出て、レイシは出ない', () => {

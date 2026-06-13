@@ -2,9 +2,8 @@
 
 import { createContext, useContext, useMemo, type ReactNode } from 'react'
 import type { SearchIndex, TaxonNode, TaxonTree } from '@/lib/core'
-import { assembleTree } from '@/lib/data/tree-runtime'
-import { ROOT_ID as BASE_ROOT } from '@/lib/data/taxa'
-import { useSupplemental } from './supplemental'
+import { buildCatalogTree, defaultCatalogTree } from '@/lib/data/catalog'
+import { useCatalog } from './catalog'
 
 interface TreeState {
   tree: TaxonTree
@@ -16,16 +15,17 @@ interface TreeState {
 
 const TreeContext = createContext<TreeState | null>(null)
 
-/** バンドル済み種＋アプリ内追加をマージしたツリーを全画面に供給（§7.4 モデルB）。 */
+/** カタログ（DB＋同梱）から分類ツリーを組んで全画面に供給。 */
 export function TreeProvider({ children }: { children: ReactNode }) {
-  const { entries } = useSupplemental()
+  const { entries } = useCatalog()
 
   const value = useMemo<TreeState>(() => {
-    const { tree, searchIndex } = assembleTree(entries)
+    const { tree, searchIndex } =
+      entries.length === 0 ? defaultCatalogTree : buildCatalogTree(entries)
     return {
       tree,
       searchIndex,
-      rootId: tree.nodes[BASE_ROOT] ? BASE_ROOT : tree.rootId,
+      rootId: tree.rootId,
       getNode: (id) => tree.nodes[id],
       allSpecies: Object.values(tree.nodes).filter((n) => n.rank === 'SPECIES'),
     }

@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:taxa": "tsx scripts/build-taxa.ts",
+    "build:snapshot": "tsx scripts/build-snapshot.ts",
     "resolve:taxa": "tsx scripts/resolve.ts"
   },
   "dependencies": {
